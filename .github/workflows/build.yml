@@ -1,0 +1,117 @@
+name: Build APKs
+
+on:
+  push:
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-companion:
+    name: Build Companion App
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('companion-app/**/*.gradle*') }}
+
+      - name: Write google-services.json
+        working-directory: companion-app/app
+        run: echo '${{ secrets.GOOGLE_SERVICES_JSON_COMPANION }}' > google-services.json
+
+      - name: Build release APK
+        working-directory: companion-app
+        run: ./gradlew assembleRelease
+
+      - name: Sign APK
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: companion-app/app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.KEYSTORE_BASE64 }}
+          alias: ${{ secrets.KEY_ALIAS }}
+          keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+
+      - name: Upload companion APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: opencompanion-${{ github.ref_name }}.apk
+          path: companion-app/app/build/outputs/apk/release/*.apk
+
+  build-carer:
+    name: Build Carer App
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('carer-app/**/*.gradle*') }}
+
+      - name: Write google-services.json
+        working-directory: carer-app/app
+        run: echo '${{ secrets.GOOGLE_SERVICES_JSON_CARER }}' > google-services.json
+
+      - name: Build release APK
+        working-directory: carer-app
+        run: ./gradlew assembleRelease
+
+      - name: Sign APK
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: carer-app/app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.KEYSTORE_BASE64 }}
+          alias: ${{ secrets.KEY_ALIAS }}
+          keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+
+      - name: Upload carer APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: opencompanion-carer-${{ github.ref_name }}.apk
+          path: carer-app/app/build/outputs/apk/release/*.apk
+
+  release:
+    name: Create GitHub Release
+    needs: [build-companion, build-carer]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/download-artifact@v4
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            opencompanion-*.apk/**
+            opencompanion-carer-*.apk/**
+          generate_release_notes: true

@@ -1,0 +1,26 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Firebase config — each user creates their own Firebase project
+**/google-services.json
+
+# Keystore files
+*.jks
+*.keystore
+
+# Generated files
+bin/
+gen/
+out/
+release/
+
+# Gradle wrapper
+!gradle/wrapper/gradle-wrapper.jar

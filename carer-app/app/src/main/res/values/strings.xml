@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OpenCompanion Carer</string>
+    <string name="pair_button">Pair with companion</string>
+    <string name="check_in_fab">Start conversation</string>
+    <string name="alert_emergency">Emergency Alert</string>
+    <string name="alert_emergency_body">Your loved one has triggered the emergency phrase</string>
+    <string name="alert_red_flag">Concern detected</string>
+    <string name="alert_generic">Activity alert</string>
+    <string name="code_expired">Code expired — tap to generate a new one</string>
+    <string name="pairing_instructions">Enter this code in the companion app:</string>
+</resources>

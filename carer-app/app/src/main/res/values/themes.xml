@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.OpenCompanionCarer" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">#FF018786</item>
+        <item name="colorPrimaryVariant">#FF005457</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">#FFBB86FC</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+    <color name="white">#FFFFFFFF</color>
+</resources>

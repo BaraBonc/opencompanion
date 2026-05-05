@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="wake_word_labels">
+        <item>Hello Zoli (Hungarian)</item>
+        <item>Hello Nana (English)</item>
+        <item>Hey Helper (English)</item>
+    </string-array>
+    <string-array name="wake_word_values">
+        <item>wakewords/hello_zoli.tflite</item>
+        <item>wakewords/hello_nana.tflite</item>
+        <item>wakewords/hey_helper.tflite</item>
+    </string-array>
+</resources>

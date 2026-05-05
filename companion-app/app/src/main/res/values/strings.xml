@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OpenCompanion</string>
+    <string name="notification_title">Listening for Zoli…</string>
+    <string name="notification_text">Say "Hello Zoli" to start a conversation</string>
+    <string name="status_listening">Listening for wake word…</string>
+    <string name="status_permission_denied">Microphone permission is required</string>
+    <string name="settings">Settings</string>
+
+    <!-- Settings labels -->
+    <string name="pref_companion_name_title">Companion name</string>
+    <string name="pref_wake_word_title">Wake word model</string>
+    <string name="pref_sensitivity_title">Sensitivity</string>
+    <string name="pref_check_in_enabled_title">Daily check-in</string>
+    <string name="pref_check_in_time_title">Check-in time</string>
+    <string name="pref_check_in_greeting_title">Check-in greeting</string>
+    <string name="pref_emergency_enabled_title">Emergency phrase detection</string>
+    <string name="pref_emergency_phrase_title">Emergency phrase</string>
+</resources>
