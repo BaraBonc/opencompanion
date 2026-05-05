@@ -1,0 +1,441 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.opencompanion.carer"
+4    android:versionCode="1"
+5    android:versionName="0.1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:4:5-67
+11-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+12-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:5:5-77
+12-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:5:22-74
+13    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+13-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:6:5-81
+13-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:6:22-78
+14    <uses-permission android:name="android.permission.VIBRATE" />
+14-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:7:5-66
+14-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:7:22-63
+15    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+15-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:8:5-81
+15-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:8:22-78
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:26:5-79
+16-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:26:22-76
+17    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+17-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:24:5-68
+17-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:24:22-65
+18    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+18-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:26:5-82
+18-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:26:22-79
+19
+20    <permission
+20-->[androidx.core:core:1.12.0] /home/barabonc/.gradle/caches/transforms-4/876e67746e2bb3d0848a5de02dac638e/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+21        android:name="com.opencompanion.carer.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+21-->[androidx.core:core:1.12.0] /home/barabonc/.gradle/caches/transforms-4/876e67746e2bb3d0848a5de02dac638e/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+22        android:protectionLevel="signature" />
+22-->[androidx.core:core:1.12.0] /home/barabonc/.gradle/caches/transforms-4/876e67746e2bb3d0848a5de02dac638e/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+23
+24    <uses-permission android:name="com.opencompanion.carer.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+24-->[androidx.core:core:1.12.0] /home/barabonc/.gradle/caches/transforms-4/876e67746e2bb3d0848a5de02dac638e/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+24-->[androidx.core:core:1.12.0] /home/barabonc/.gradle/caches/transforms-4/876e67746e2bb3d0848a5de02dac638e/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+25
+26    <application
+26-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:10:5-46:19
+27        android:allowBackup="false"
+27-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:11:9-36
+28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+28-->[androidx.core:core:1.12.0] /home/barabonc/.gradle/caches/transforms-4/876e67746e2bb3d0848a5de02dac638e/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+29        android:debuggable="true"
+30        android:extractNativeLibs="false"
+31        android:icon="@mipmap/ic_launcher"
+31-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:12:9-43
+32        android:label="@string/app_name"
+32-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:13:9-41
+33        android:roundIcon="@mipmap/ic_launcher_round"
+33-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:14:9-54
+34        android:supportsRtl="true"
+34-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:15:9-35
+35        android:theme="@style/Theme.OpenCompanionCarer" >
+35-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:16:9-56
+36        <activity
+36-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:18:9-25:20
+37            android:name="com.opencompanion.carer.ui.MainActivity"
+37-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:19:13-44
+38            android:exported="true" >
+38-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:20:13-36
+39            <intent-filter>
+39-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:21:13-24:29
+40                <action android:name="android.intent.action.MAIN" />
+40-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:22:17-69
+40-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:22:25-66
+41
+42                <category android:name="android.intent.category.LAUNCHER" />
+42-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:23:17-77
+42-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:23:27-74
+43            </intent-filter>
+44        </activity>
+45        <activity
+45-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:27:9-29:40
+46            android:name="com.opencompanion.carer.ui.PairingActivity"
+46-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:28:13-47
+47            android:exported="false" />
+47-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:29:13-37
+48        <activity
+48-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:31:9-35:43
+49            android:name="com.opencompanion.carer.ui.AlertDetailActivity"
+49-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:32:13-51
+50            android:exported="false"
+50-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:33:13-37
+51            android:showWhenLocked="true"
+51-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:34:13-42
+52            android:turnScreenOn="true" />
+52-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:35:13-40
+53
+54        <!-- Firebase Cloud Messaging handler -->
+55        <service
+55-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:38:9-44:19
+56            android:name="com.opencompanion.carer.firebase.CarerMessagingService"
+56-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:39:13-59
+57            android:exported="false" >
+57-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:40:13-37
+58            <intent-filter>
+58-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:41:13-43:29
+59                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+59-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:42:17-78
+59-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:42:25-75
+60            </intent-filter>
+61        </service>
+62
+63        <provider
+63-->[androidx.emoji2:emoji2:1.2.0] /home/barabonc/.gradle/caches/transforms-4/7086974c58194b23aa565d8b09ca8cd2/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+64            android:name="androidx.startup.InitializationProvider"
+64-->[androidx.emoji2:emoji2:1.2.0] /home/barabonc/.gradle/caches/transforms-4/7086974c58194b23aa565d8b09ca8cd2/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+65            android:authorities="com.opencompanion.carer.androidx-startup"
+65-->[androidx.emoji2:emoji2:1.2.0] /home/barabonc/.gradle/caches/transforms-4/7086974c58194b23aa565d8b09ca8cd2/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+66            android:exported="false" >
+66-->[androidx.emoji2:emoji2:1.2.0] /home/barabonc/.gradle/caches/transforms-4/7086974c58194b23aa565d8b09ca8cd2/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+67            <meta-data
+67-->[androidx.emoji2:emoji2:1.2.0] /home/barabonc/.gradle/caches/transforms-4/7086974c58194b23aa565d8b09ca8cd2/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+68                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+68-->[androidx.emoji2:emoji2:1.2.0] /home/barabonc/.gradle/caches/transforms-4/7086974c58194b23aa565d8b09ca8cd2/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+69                android:value="androidx.startup" />
+69-->[androidx.emoji2:emoji2:1.2.0] /home/barabonc/.gradle/caches/transforms-4/7086974c58194b23aa565d8b09ca8cd2/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+70            <meta-data
+70-->[androidx.lifecycle:lifecycle-process:2.6.1] /home/barabonc/.gradle/caches/transforms-4/ceae1a6de80bacfaf71fbdab0e73fe4c/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
+71                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+71-->[androidx.lifecycle:lifecycle-process:2.6.1] /home/barabonc/.gradle/caches/transforms-4/ceae1a6de80bacfaf71fbdab0e73fe4c/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
+72                android:value="androidx.startup" />
+72-->[androidx.lifecycle:lifecycle-process:2.6.1] /home/barabonc/.gradle/caches/transforms-4/ceae1a6de80bacfaf71fbdab0e73fe4c/transformed/lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
+73            <meta-data
+73-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+74                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+74-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+75                android:value="androidx.startup" />
+75-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+76        </provider>
+77
+78        <service
+78-->[com.google.firebase:firebase-auth-ktx:22.3.0] /home/barabonc/.gradle/caches/transforms-4/6d8251a0676e3df52412aa6f76ea672d/transformed/firebase-auth-ktx-22.3.0/AndroidManifest.xml:8:9-14:19
+79            android:name="com.google.firebase.components.ComponentDiscoveryService"
+79-->[com.google.firebase:firebase-auth-ktx:22.3.0] /home/barabonc/.gradle/caches/transforms-4/6d8251a0676e3df52412aa6f76ea672d/transformed/firebase-auth-ktx-22.3.0/AndroidManifest.xml:9:13-84
+80            android:directBootAware="true"
+80-->[com.google.firebase:firebase-common:20.4.2] /home/barabonc/.gradle/caches/transforms-4/c3de4323b313bda9d130b460e595414f/transformed/firebase-common-20.4.2/AndroidManifest.xml:32:13-43
+81            android:exported="false" >
+81-->[com.google.firebase:firebase-auth-ktx:22.3.0] /home/barabonc/.gradle/caches/transforms-4/6d8251a0676e3df52412aa6f76ea672d/transformed/firebase-auth-ktx-22.3.0/AndroidManifest.xml:10:13-37
+82            <meta-data
+82-->[com.google.firebase:firebase-auth-ktx:22.3.0] /home/barabonc/.gradle/caches/transforms-4/6d8251a0676e3df52412aa6f76ea672d/transformed/firebase-auth-ktx-22.3.0/AndroidManifest.xml:11:13-13:85
+83                android:name="com.google.firebase.components:com.google.firebase.auth.ktx.FirebaseAuthLegacyRegistrar"
+83-->[com.google.firebase:firebase-auth-ktx:22.3.0] /home/barabonc/.gradle/caches/transforms-4/6d8251a0676e3df52412aa6f76ea672d/transformed/firebase-auth-ktx-22.3.0/AndroidManifest.xml:12:17-119
+84                android:value="com.google.firebase.components.ComponentRegistrar" />
+84-->[com.google.firebase:firebase-auth-ktx:22.3.0] /home/barabonc/.gradle/caches/transforms-4/6d8251a0676e3df52412aa6f76ea672d/transformed/firebase-auth-ktx-22.3.0/AndroidManifest.xml:13:17-82
+85            <meta-data
+85-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:69:13-71:85
+86                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+86-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:70:17-109
+87                android:value="com.google.firebase.components.ComponentRegistrar" />
+87-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:71:17-82
+88            <meta-data
+88-->[com.google.firebase:firebase-database-ktx:20.3.0] /home/barabonc/.gradle/caches/transforms-4/9cd9ad672ba3cb063d47683a48570330/transformed/firebase-database-ktx-20.3.0/AndroidManifest.xml:12:13-14:85
+89                android:name="com.google.firebase.components:com.google.firebase.database.ktx.FirebaseDatabaseLegacyRegistrar"
+89-->[com.google.firebase:firebase-database-ktx:20.3.0] /home/barabonc/.gradle/caches/transforms-4/9cd9ad672ba3cb063d47683a48570330/transformed/firebase-database-ktx-20.3.0/AndroidManifest.xml:13:17-127
+90                android:value="com.google.firebase.components.ComponentRegistrar" />
+90-->[com.google.firebase:firebase-database-ktx:20.3.0] /home/barabonc/.gradle/caches/transforms-4/9cd9ad672ba3cb063d47683a48570330/transformed/firebase-database-ktx-20.3.0/AndroidManifest.xml:14:17-82
+91            <meta-data
+91-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /home/barabonc/.gradle/caches/transforms-4/104b4f95b1b7ec3431231af7560d4169/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:26:13-28:85
+92                android:name="com.google.firebase.components:com.google.firebase.messaging.ktx.FirebaseMessagingLegacyRegistrar"
+92-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /home/barabonc/.gradle/caches/transforms-4/104b4f95b1b7ec3431231af7560d4169/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:27:17-129
+93                android:value="com.google.firebase.components.ComponentRegistrar" />
+93-->[com.google.firebase:firebase-messaging-ktx:23.4.0] /home/barabonc/.gradle/caches/transforms-4/104b4f95b1b7ec3431231af7560d4169/transformed/firebase-messaging-ktx-23.4.0/AndroidManifest.xml:28:17-82
+94            <meta-data
+94-->[com.google.firebase:firebase-database:20.3.0] /home/barabonc/.gradle/caches/transforms-4/40fac4b445cd4112cd2ec44b2c8b01cf/transformed/firebase-database-20.3.0/AndroidManifest.xml:29:13-31:85
+95                android:name="com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar"
+95-->[com.google.firebase:firebase-database:20.3.0] /home/barabonc/.gradle/caches/transforms-4/40fac4b445cd4112cd2ec44b2c8b01cf/transformed/firebase-database-20.3.0/AndroidManifest.xml:30:17-120
+96                android:value="com.google.firebase.components.ComponentRegistrar" />
+96-->[com.google.firebase:firebase-database:20.3.0] /home/barabonc/.gradle/caches/transforms-4/40fac4b445cd4112cd2ec44b2c8b01cf/transformed/firebase-database-20.3.0/AndroidManifest.xml:31:17-82
+97            <meta-data
+97-->[com.google.firebase:firebase-database:20.3.0] /home/barabonc/.gradle/caches/transforms-4/40fac4b445cd4112cd2ec44b2c8b01cf/transformed/firebase-database-20.3.0/AndroidManifest.xml:32:13-34:85
+98                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+98-->[com.google.firebase:firebase-database:20.3.0] /home/barabonc/.gradle/caches/transforms-4/40fac4b445cd4112cd2ec44b2c8b01cf/transformed/firebase-database-20.3.0/AndroidManifest.xml:33:17-109
+99                android:value="com.google.firebase.components.ComponentRegistrar" />
+99-->[com.google.firebase:firebase-database:20.3.0] /home/barabonc/.gradle/caches/transforms-4/40fac4b445cd4112cd2ec44b2c8b01cf/transformed/firebase-database-20.3.0/AndroidManifest.xml:34:17-82
+100            <meta-data
+100-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:57:13-59:85
+101                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+101-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:58:17-122
+102                android:value="com.google.firebase.components.ComponentRegistrar" />
+102-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:59:17-82
+103            <meta-data
+103-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:60:13-62:85
+104                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+104-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:61:17-119
+105                android:value="com.google.firebase.components.ComponentRegistrar" />
+105-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:62:17-82
+106            <meta-data
+106-->[com.google.firebase:firebase-installations:17.2.0] /home/barabonc/.gradle/caches/transforms-4/b2af8b325560573be5ee4e54f3de9186/transformed/firebase-installations-17.2.0/AndroidManifest.xml:15:13-17:85
+107                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+107-->[com.google.firebase:firebase-installations:17.2.0] /home/barabonc/.gradle/caches/transforms-4/b2af8b325560573be5ee4e54f3de9186/transformed/firebase-installations-17.2.0/AndroidManifest.xml:16:17-130
+108                android:value="com.google.firebase.components.ComponentRegistrar" />
+108-->[com.google.firebase:firebase-installations:17.2.0] /home/barabonc/.gradle/caches/transforms-4/b2af8b325560573be5ee4e54f3de9186/transformed/firebase-installations-17.2.0/AndroidManifest.xml:17:17-82
+109            <meta-data
+109-->[com.google.firebase:firebase-installations:17.2.0] /home/barabonc/.gradle/caches/transforms-4/b2af8b325560573be5ee4e54f3de9186/transformed/firebase-installations-17.2.0/AndroidManifest.xml:18:13-20:85
+110                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+110-->[com.google.firebase:firebase-installations:17.2.0] /home/barabonc/.gradle/caches/transforms-4/b2af8b325560573be5ee4e54f3de9186/transformed/firebase-installations-17.2.0/AndroidManifest.xml:19:17-127
+111                android:value="com.google.firebase.components.ComponentRegistrar" />
+111-->[com.google.firebase:firebase-installations:17.2.0] /home/barabonc/.gradle/caches/transforms-4/b2af8b325560573be5ee4e54f3de9186/transformed/firebase-installations-17.2.0/AndroidManifest.xml:20:17-82
+112            <meta-data
+112-->[com.google.firebase:firebase-common-ktx:20.4.2] /home/barabonc/.gradle/caches/transforms-4/fb8926d0f562af984c432625fdde0e6b/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:12:13-14:85
+113                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+113-->[com.google.firebase:firebase-common-ktx:20.4.2] /home/barabonc/.gradle/caches/transforms-4/fb8926d0f562af984c432625fdde0e6b/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:13:17-116
+114                android:value="com.google.firebase.components.ComponentRegistrar" />
+114-->[com.google.firebase:firebase-common-ktx:20.4.2] /home/barabonc/.gradle/caches/transforms-4/fb8926d0f562af984c432625fdde0e6b/transformed/firebase-common-ktx-20.4.2/AndroidManifest.xml:14:17-82
+115            <meta-data
+115-->[com.google.firebase:firebase-common:20.4.2] /home/barabonc/.gradle/caches/transforms-4/c3de4323b313bda9d130b460e595414f/transformed/firebase-common-20.4.2/AndroidManifest.xml:35:13-37:85
+116                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+116-->[com.google.firebase:firebase-common:20.4.2] /home/barabonc/.gradle/caches/transforms-4/c3de4323b313bda9d130b460e595414f/transformed/firebase-common-20.4.2/AndroidManifest.xml:36:17-109
+117                android:value="com.google.firebase.components.ComponentRegistrar" />
+117-->[com.google.firebase:firebase-common:20.4.2] /home/barabonc/.gradle/caches/transforms-4/c3de4323b313bda9d130b460e595414f/transformed/firebase-common-20.4.2/AndroidManifest.xml:37:17-82
+118            <meta-data
+118-->[com.google.firebase:firebase-datatransport:18.1.7] /home/barabonc/.gradle/caches/transforms-4/a4b43a9db53a85fbcabfdc6caea149c9/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
+119                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+119-->[com.google.firebase:firebase-datatransport:18.1.7] /home/barabonc/.gradle/caches/transforms-4/a4b43a9db53a85fbcabfdc6caea149c9/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
+120                android:value="com.google.firebase.components.ComponentRegistrar" />
+120-->[com.google.firebase:firebase-datatransport:18.1.7] /home/barabonc/.gradle/caches/transforms-4/a4b43a9db53a85fbcabfdc6caea149c9/transformed/firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
+121        </service>
+122
+123        <activity
+123-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:29:9-46:20
+124            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+124-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:30:13-80
+125            android:excludeFromRecents="true"
+125-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:31:13-46
+126            android:exported="true"
+126-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:32:13-36
+127            android:launchMode="singleTask"
+127-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:33:13-44
+128            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+128-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:34:13-72
+129            <intent-filter>
+129-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:35:13-45:29
+130                <action android:name="android.intent.action.VIEW" />
+130-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:36:17-69
+130-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:36:25-66
+131
+132                <category android:name="android.intent.category.DEFAULT" />
+132-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:38:17-76
+132-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:38:27-73
+133                <category android:name="android.intent.category.BROWSABLE" />
+133-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:39:17-78
+133-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:39:27-75
+134
+135                <data
+135-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:41:17-44:51
+136                    android:host="firebase.auth"
+136-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:42:21-49
+137                    android:path="/"
+137-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:43:21-37
+138                    android:scheme="genericidp" />
+138-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:44:21-48
+139            </intent-filter>
+140        </activity>
+141        <activity
+141-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:47:9-64:20
+142            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+142-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:48:13-79
+143            android:excludeFromRecents="true"
+143-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:49:13-46
+144            android:exported="true"
+144-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:50:13-36
+145            android:launchMode="singleTask"
+145-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:51:13-44
+146            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+146-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:52:13-72
+147            <intent-filter>
+147-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:53:13-63:29
+148                <action android:name="android.intent.action.VIEW" />
+148-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:36:17-69
+148-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:36:25-66
+149
+150                <category android:name="android.intent.category.DEFAULT" />
+150-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:38:17-76
+150-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:38:27-73
+151                <category android:name="android.intent.category.BROWSABLE" />
+151-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:39:17-78
+151-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:39:27-75
+152
+153                <data
+153-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:41:17-44:51
+154                    android:host="firebase.auth"
+154-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:42:21-49
+155                    android:path="/"
+155-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:43:21-37
+156                    android:scheme="recaptcha" />
+156-->[com.google.firebase:firebase-auth:22.3.0] /home/barabonc/.gradle/caches/transforms-4/91f05e24ff2fbd49cc974d9cb93308ba/transformed/firebase-auth-22.3.0/AndroidManifest.xml:44:21-48
+157            </intent-filter>
+158        </activity>
+159
+160        <receiver
+160-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:29:9-40:20
+161            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+161-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:30:13-78
+162            android:exported="true"
+162-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:31:13-36
+163            android:permission="com.google.android.c2dm.permission.SEND" >
+163-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:32:13-73
+164            <intent-filter>
+164-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:33:13-35:29
+165                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+165-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:34:17-81
+165-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:34:25-78
+166            </intent-filter>
+167
+168            <meta-data
+168-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:37:13-39:40
+169                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+169-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:38:17-92
+170                android:value="true" />
+170-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:39:17-37
+171        </receiver>
+172        <!--
+173             FirebaseMessagingService performs security checks at runtime,
+174             but set to not exported to explicitly avoid allowing another app to call it.
+175        -->
+176        <service
+176-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:46:9-53:19
+177            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+177-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:47:13-82
+178            android:directBootAware="true"
+178-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:48:13-43
+179            android:exported="false" >
+179-->[com.google.firebase:firebase-messaging:23.4.0] /home/barabonc/.gradle/caches/transforms-4/7bda36fee0189e7506d78a688dd2e210/transformed/firebase-messaging-23.4.0/AndroidManifest.xml:49:13-37
+180            <intent-filter android:priority="-500" >
+180-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:41:13-43:29
+181                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+181-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:42:17-78
+181-->/home/barabonc/opencompanion/carer-app/app/src/main/AndroidManifest.xml:42:25-75
+182            </intent-filter>
+183        </service>
+184
+185        <provider
+185-->[com.google.firebase:firebase-common:20.4.2] /home/barabonc/.gradle/caches/transforms-4/c3de4323b313bda9d130b460e595414f/transformed/firebase-common-20.4.2/AndroidManifest.xml:23:9-28:39
+186            android:name="com.google.firebase.provider.FirebaseInitProvider"
+186-->[com.google.firebase:firebase-common:20.4.2] /home/barabonc/.gradle/caches/transforms-4/c3de4323b313bda9d130b460e595414f/transformed/firebase-common-20.4.2/AndroidManifest.xml:24:13-77
+187            android:authorities="com.opencompanion.carer.firebaseinitprovider"
+187-->[com.google.firebase:firebase-common:20.4.2] /home/barabonc/.gradle/caches/transforms-4/c3de4323b313bda9d130b460e595414f/transformed/firebase-common-20.4.2/AndroidManifest.xml:25:13-72
+188            android:directBootAware="true"
+188-->[com.google.firebase:firebase-common:20.4.2] /home/barabonc/.gradle/caches/transforms-4/c3de4323b313bda9d130b460e595414f/transformed/firebase-common-20.4.2/AndroidManifest.xml:26:13-43
+189            android:exported="false"
+189-->[com.google.firebase:firebase-common:20.4.2] /home/barabonc/.gradle/caches/transforms-4/c3de4323b313bda9d130b460e595414f/transformed/firebase-common-20.4.2/AndroidManifest.xml:27:13-37
+190            android:initOrder="100" />
+190-->[com.google.firebase:firebase-common:20.4.2] /home/barabonc/.gradle/caches/transforms-4/c3de4323b313bda9d130b460e595414f/transformed/firebase-common-20.4.2/AndroidManifest.xml:28:13-36
+191
+192        <activity
+192-->[com.google.android.gms:play-services-base:18.1.0] /home/barabonc/.gradle/caches/transforms-4/98814e3a7ef54f5c88cca90fb6b85e26/transformed/play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
+193            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+193-->[com.google.android.gms:play-services-base:18.1.0] /home/barabonc/.gradle/caches/transforms-4/98814e3a7ef54f5c88cca90fb6b85e26/transformed/play-services-base-18.1.0/AndroidManifest.xml:20:19-85
+194            android:exported="false"
+194-->[com.google.android.gms:play-services-base:18.1.0] /home/barabonc/.gradle/caches/transforms-4/98814e3a7ef54f5c88cca90fb6b85e26/transformed/play-services-base-18.1.0/AndroidManifest.xml:22:19-43
+195            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+195-->[com.google.android.gms:play-services-base:18.1.0] /home/barabonc/.gradle/caches/transforms-4/98814e3a7ef54f5c88cca90fb6b85e26/transformed/play-services-base-18.1.0/AndroidManifest.xml:21:19-78
+196
+197        <meta-data
+197-->[com.google.android.gms:play-services-basement:18.1.0] /home/barabonc/.gradle/caches/transforms-4/75dda22f5db0ff3f0067b52ba1f4f4f3/transformed/play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+198            android:name="com.google.android.gms.version"
+198-->[com.google.android.gms:play-services-basement:18.1.0] /home/barabonc/.gradle/caches/transforms-4/75dda22f5db0ff3f0067b52ba1f4f4f3/transformed/play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+199            android:value="@integer/google_play_services_version" />
+199-->[com.google.android.gms:play-services-basement:18.1.0] /home/barabonc/.gradle/caches/transforms-4/75dda22f5db0ff3f0067b52ba1f4f4f3/transformed/play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+200
+201        <receiver
+201-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+202            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+202-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+203            android:directBootAware="false"
+203-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+204            android:enabled="true"
+204-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+205            android:exported="true"
+205-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+206            android:permission="android.permission.DUMP" >
+206-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+207            <intent-filter>
+207-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+208                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+208-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+208-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+209            </intent-filter>
+210            <intent-filter>
+210-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+211                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+211-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+211-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+212            </intent-filter>
+213            <intent-filter>
+213-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+214                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+214-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+214-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+215            </intent-filter>
+216            <intent-filter>
+216-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+217                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+217-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+217-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/barabonc/.gradle/caches/transforms-4/42e212ebf639159bc32541fd8b3aec62/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+218            </intent-filter>
+219        </receiver>
+220
+221        <service
+221-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/barabonc/.gradle/caches/transforms-4/5f67b74caec44670fbeff916502fe7ba/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
+222            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+222-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/barabonc/.gradle/caches/transforms-4/5f67b74caec44670fbeff916502fe7ba/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
+223            android:exported="false" >
+223-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/barabonc/.gradle/caches/transforms-4/5f67b74caec44670fbeff916502fe7ba/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
+224            <meta-data
+224-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/barabonc/.gradle/caches/transforms-4/5f67b74caec44670fbeff916502fe7ba/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
+225                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+225-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/barabonc/.gradle/caches/transforms-4/5f67b74caec44670fbeff916502fe7ba/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
+226                android:value="cct" />
+226-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /home/barabonc/.gradle/caches/transforms-4/5f67b74caec44670fbeff916502fe7ba/transformed/transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
+227        </service>
+228        <service
+228-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/barabonc/.gradle/caches/transforms-4/ec52f5fe857d59ffee69075f84d13554/transformed/transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
+229            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+229-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/barabonc/.gradle/caches/transforms-4/ec52f5fe857d59ffee69075f84d13554/transformed/transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
+230            android:exported="false"
+230-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/barabonc/.gradle/caches/transforms-4/ec52f5fe857d59ffee69075f84d13554/transformed/transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
+231            android:permission="android.permission.BIND_JOB_SERVICE" >
+231-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/barabonc/.gradle/caches/transforms-4/ec52f5fe857d59ffee69075f84d13554/transformed/transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
+232        </service>
+233
+234        <receiver
+234-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/barabonc/.gradle/caches/transforms-4/ec52f5fe857d59ffee69075f84d13554/transformed/transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
+235            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+235-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/barabonc/.gradle/caches/transforms-4/ec52f5fe857d59ffee69075f84d13554/transformed/transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
+236            android:exported="false" />
+236-->[com.google.android.datatransport:transport-runtime:3.1.8] /home/barabonc/.gradle/caches/transforms-4/ec52f5fe857d59ffee69075f84d13554/transformed/transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
+237    </application>
+238
+239</manifest>

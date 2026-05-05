@@ -1,0 +1,36 @@
+R_DEF: Internal format may change without notice
+local
+color white
+drawable ic_alert
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id acknowledge_button
+id alert_type_text
+id check_in_fab
+id code_text
+id pair_button
+id status_header
+id timer_text
+id timestamp_text
+layout activity_alert_detail
+layout activity_main
+layout activity_pairing
+mipmap ic_launcher
+mipmap ic_launcher_round
+string alert_emergency
+string alert_emergency_body
+string alert_generic
+string alert_red_flag
+string app_name
+string check_in_fab
+string code_expired
+string firebase_database_url
+string gcm_defaultSenderId
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
+string pair_button
+string pairing_instructions
+string project_id
+style Theme.OpenCompanionCarer

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="firebase_database_url" translatable="false">https://opencompanion-default-rtdb.europe-west1.firebasedatabase.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">797293627079</string>
+    <string name="google_api_key" translatable="false">AIzaSyBpqpC3bf5puNuhE2QQccDJDJ0ibV3LKpM</string>
+    <string name="google_app_id" translatable="false">1:797293627079:android:739b08531ad1008637a0e2</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBpqpC3bf5puNuhE2QQccDJDJ0ibV3LKpM</string>
+    <string name="google_storage_bucket" translatable="false">opencompanion.firebasestorage.app</string>
+    <string name="project_id" translatable="false">opencompanion</string>
+</resources>

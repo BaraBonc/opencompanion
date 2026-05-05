@@ -5,12 +5,12 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
 import androidx.preference.PreferenceManager
 import com.opencompanion.companion.firebase.FirebaseLogger
 import java.util.Calendar
-import java.util.Locale
 
 class CheckInReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
@@ -41,11 +41,14 @@ object ProactiveCheckInScheduler {
         }
 
         val alarm = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarm.setExactAndAllowWhileIdle(
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            pendingIntent(context)
-        )
+        val pi = pendingIntent(context)
+        // API 31+ requires user to explicitly grant SCHEDULE_EXACT_ALARM.
+        // Fall back to an inexact alarm (fires within ~30 min of target) if not granted.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarm.canScheduleExactAlarms()) {
+            alarm.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pi)
+        } else {
+            alarm.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pi)
+        }
     }
 
     fun scheduleNext(context: Context) = schedule(context)
