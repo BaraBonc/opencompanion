@@ -23,25 +23,15 @@
 - [x] 3-stage openWakeWord pipeline implemented in WakeWordDetector:
       raw PCM → melspectrogram.tflite → embedding_model.tflite → wakeword.tflite
 - [x] Both apps build and install successfully
-- [ ] **CRASH (next session priority)** — WakeWordService crashes after permissions granted
+- [x] Race condition crash fixed — accumulation moved into coroutine local scope
 - [ ] End-to-end test: wake word → ChatGPT voice
 - [ ] "Hello Zoli" TFLite model trained (before September delivery)
 
-## Active crash — fix first next session
-**Error**: `ArrayIndexOutOfBoundsException` in `WakeWordDetector.process()` (line ~70)
-```
-src.length=1280 srcPos=0 dst.length=1280 dstPos=1280 length=1280
-```
-**Cause**: `accumCount` reaches 1280 (full buffer) on a new call, but the
-`minOf(space, ...)` calc that should yield 0 is somehow yielding 1280. Likely
-a race: old detection coroutine still runs after `stopAudioRecord()` cancels
-the job but before the coroutine actually stops, leaving `accumCount` dirty for
-the new loop.
-
-**Fix**: Move audio accumulation out of `WakeWordDetector` into `WakeWordService`
-(single coroutine — no race). `WakeWordDetector.process()` should accept only
-complete 1280-sample `FloatArray` chunks. `WakeWordService` owns the accumulation
-buffer and only calls `process()` when it has exactly 1280 samples ready.
+## Next session priorities
+1. Open app, grant mic + BT permissions, confirm it stays running (crash fixed)
+2. Set ChatGPT as default assistant: Settings → Apps → Default apps → Digital assistant app
+3. Say **"Alexa"** (stand-in model) → confirm ChatGPT opens in voice mode
+4. If working: begin training real "Hello Zoli" openWakeWord model
 
 ## Active decisions log
 2026-05-05 — TFLite + openWakeWord, 3-stage pipeline confirmed
