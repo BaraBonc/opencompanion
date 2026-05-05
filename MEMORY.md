@@ -4,54 +4,72 @@
 **Current phase**: Phase 1 — Companion app MVP
 
 ## Status
-- [x] Repo structure created
-- [x] MEMORY.md, PROJECT.md, companion-app/SPEC.md, carer-app/SPEC.md written
-- [x] Companion app scaffolded (package: com.opencompanion.companion, minSdk 26)
-- [x] Carer app scaffolded (package: com.opencompanion.carer, minSdk 26)
-- [x] GitHub Actions build workflow written
+- [x] Repo structure + all spec/doc files
 - [x] GitHub repo live — https://github.com/BaraBonc/opencompanion
-- [x] WakeWordService — TFLite inference loop on AudioRecord (foreground service)
-- [x] BluetoothScoManager — HFP connect/disconnect receiver, SCO ↔ phone mic
-- [x] ACTION_ASSIST handoff on wake word detection
-- [x] BootReceiver — restarts WakeWordService after device reboot
-- [x] ProactiveCheckInScheduler — AlarmManager exact alarm + TTS + ACTION_ASSIST
-- [x] EmergencyPhraseDetector — second TFLite interpreter, 880Hz tone, Firebase log
-- [x] FirebaseLogger — anonymous auth, timestamped activity events
-- [x] DailySummaryWorker — WorkManager, reads Firebase, pushes summary to carer
-- [x] CompanionMessagingService — FCM handler (carer-initiated check-in)
-- [x] SettingsActivity — wake word, sensitivity, check-in time/greeting, emergency
-- [x] Gradle wrappers added (Gradle 8.6)
-- [x] Launcher icons — adaptive icons for both apps
-- [x] Wake word models — real openWakeWord alexa_v0.1 model as stand-in (836KB each)
-- [ ] Firebase google-services.json — Viktor setting up Firebase project now
-- [ ] First successful build (./gradlew assembleDebug)
-- [ ] Tested on Pixel 6 Pro + JBL Link speaker
-- [ ] "Hello Zoli" TFLite model trained (Phase 1b — before September delivery)
+- [x] Companion app scaffolded (com.opencompanion.companion, minSdk 26)
+- [x] Carer app scaffolded (com.opencompanion.carer, minSdk 26)
+- [x] GitHub Actions build workflow
+- [x] Gradle 8.6 wrappers, gradle.properties, proguard rules
+- [x] Launcher icons — adaptive icons (companion: purple/mic, carer: teal/heart)
+- [x] Firebase google-services.json in both app/ dirs (not committed — .gitignored)
+- [x] All Kotlin service classes written:
+      WakeWordService, BluetoothScoManager, WakeWordDetector (3-stage pipeline),
+      EmergencyPhraseDetector, BootReceiver, ProactiveCheckInScheduler,
+      CheckInReceiver, DailySummaryWorker, FirebaseLogger,
+      CompanionMessagingService, CarerMessagingService, RemoteCheckIn,
+      PairingActivity, MainActivity (both apps), SettingsActivity
+- [x] SCHEDULE_EXACT_ALARM crash fixed (falls back to inexact on API 31+)
+- [x] build/ dirs removed from git, .gitignore fixed
+- [x] 3-stage openWakeWord pipeline implemented in WakeWordDetector:
+      raw PCM → melspectrogram.tflite → embedding_model.tflite → wakeword.tflite
+- [x] Both apps build and install successfully
+- [ ] **CRASH (next session priority)** — WakeWordService crashes after permissions granted
+- [ ] End-to-end test: wake word → ChatGPT voice
+- [ ] "Hello Zoli" TFLite model trained (before September delivery)
+
+## Active crash — fix first next session
+**Error**: `ArrayIndexOutOfBoundsException` in `WakeWordDetector.process()` (line ~70)
+```
+src.length=1280 srcPos=0 dst.length=1280 dstPos=1280 length=1280
+```
+**Cause**: `accumCount` reaches 1280 (full buffer) on a new call, but the
+`minOf(space, ...)` calc that should yield 0 is somehow yielding 1280. Likely
+a race: old detection coroutine still runs after `stopAudioRecord()` cancels
+the job but before the coroutine actually stops, leaving `accumCount` dirty for
+the new loop.
+
+**Fix**: Move audio accumulation out of `WakeWordDetector` into `WakeWordService`
+(single coroutine — no race). `WakeWordDetector.process()` should accept only
+complete 1280-sample `FloatArray` chunks. `WakeWordService` owns the accumulation
+buffer and only calls `process()` when it has exactly 1280 samples ready.
 
 ## Active decisions log
-2026-05-05 — Using TFLite + openWakeWord for wake word detection
-2026-05-05 — Firebase Spark tier for all backend needs
+2026-05-05 — TFLite + openWakeWord, 3-stage pipeline confirmed
+2026-05-05 — Firebase Spark tier, anonymous auth, 6-digit pairing
 2026-05-05 — ACTION_ASSIST intent for AI handoff (no API cost)
-2026-05-05 — Bluetooth SCO for external speakers, phone mic/speaker fallback
-2026-05-05 — Anonymous Firebase auth + 6-digit pairing code, no user accounts
-2026-05-05 — Using openWakeWord alexa_v0.1.tflite as stand-in for all four model
-            slots until "Hello Zoli" model is trained
+2026-05-05 — Bluetooth SCO for external speakers, phone mic fallback
+2026-05-05 — openWakeWord alexa_v0.1.tflite as stand-in (trigger: "Alexa")
+             Real "Hello Zoli" model to be trained before September delivery
+2026-05-05 — Digital assistant app setting: Settings → Apps → Default apps
+             → Digital assistant app (or long-press Home → tap corner icon)
 
-## Blocking: what Viktor needs to do
-1. Firebase console: create project → enable Realtime DB + Auth (anonymous) + FCM
-2. Add Android app (com.opencompanion.companion) → download google-services.json
-   → drop into companion-app/app/google-services.json
-3. Add Android app (com.opencompanion.carer) → download google-services.json
-   → drop into carer-app/app/google-services.json
-4. Run: cd ~/opencompanion/companion-app && ./gradlew assembleDebug
+## TFLite model shapes (confirmed)
+melspectrogram.tflite:  IN [1, N] float32 → OUT [1, 8, 1, 32]  (N=1280 samples)
+embedding_model.tflite: IN [1, 76, 32, 1]  → OUT [1, 1, 1, 96]
+wakeword model:         IN [1, 16, 96]      → OUT [1, 1]
+Warmup: ~2s (fills both sliding windows before first score)
 
-## Next session priorities (after Firebase JSON lands)
-1. First build verification — fix any remaining compile errors
-2. Sideload companion APK to Pixel 6 Pro, set ChatGPT as default assistant
-3. End-to-end test: wake word detection → ChatGPT voice mode
-4. Begin training real "Hello Zoli" openWakeWord model
+## Asset files (companion-app/app/src/main/assets/wakewords/)
+melspectrogram.tflite, embedding_model.tflite — pipeline models
+hello_zoli.tflite, hello_nana.tflite, hey_helper.tflite, call_zoli.tflite
+  — all currently alexa_v0.1 stand-in (836KB each)
+
+## Environment
+ANDROID_HOME=/home/barabonc/android-sdk (in .bashrc)
+JDK 17: /usr/lib/jvm/java-17-openjdk-amd64
+Device: Pixel 6 Pro on 192.168.0.69 (ADB wireless, reconnect if port changes)
+Build: cd companion-app && ANDROID_HOME=~/android-sdk ./gradlew assembleDebug
+Install: adb -s 192.168.0.69:39049 install -r app/build/outputs/apk/debug/app-debug.apk
 
 ## Reference files
-Full context: PROJECT.md
-Companion spec: companion-app/SPEC.md
-Carer spec: carer-app/SPEC.md
+Full context: PROJECT.md | Companion spec: companion-app/SPEC.md | Carer spec: carer-app/SPEC.md
