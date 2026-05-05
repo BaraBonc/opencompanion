@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import com.opencompanion.companion.R
 import com.opencompanion.companion.databinding.ActivityMainBinding
 import com.opencompanion.companion.scheduler.ProactiveCheckInScheduler
+import com.opencompanion.companion.service.DailySummaryWorker
 import com.opencompanion.companion.service.WakeWordService
 
 class MainActivity : AppCompatActivity() {
@@ -65,5 +66,6 @@ class MainActivity : AppCompatActivity() {
             Intent(this, WakeWordService::class.java)
         )
         ProactiveCheckInScheduler.schedule(this)
+        DailySummaryWorker.schedule(this)
     }
 }

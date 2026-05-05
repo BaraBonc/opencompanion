@@ -1,0 +1,2 @@
+-keep class com.opencompanion.companion.** { *; }
+-keep class org.tensorflow.** { *; }

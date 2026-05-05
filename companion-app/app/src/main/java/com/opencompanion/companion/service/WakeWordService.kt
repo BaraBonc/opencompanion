@@ -13,6 +13,7 @@ import androidx.core.app.NotificationCompat
 import com.opencompanion.companion.R
 import com.opencompanion.companion.audio.BluetoothScoManager
 import com.opencompanion.companion.firebase.FirebaseLogger
+import com.opencompanion.companion.wakeword.EmergencyPhraseDetector
 import com.opencompanion.companion.wakeword.WakeWordDetector
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,15 +35,17 @@ class WakeWordService : Service() {
     private val serviceScope = CoroutineScope(Dispatchers.Default)
 
     private lateinit var wakeWordDetector: WakeWordDetector
+    private lateinit var emergencyDetector: EmergencyPhraseDetector
     private lateinit var bluetoothScoManager: BluetoothScoManager
     private lateinit var firebaseLogger: FirebaseLogger
 
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
-        wakeWordDetector = WakeWordDetector(this)
-        bluetoothScoManager = BluetoothScoManager(this, ::onAudioSourceChanged)
         firebaseLogger = FirebaseLogger()
+        wakeWordDetector = WakeWordDetector(this)
+        emergencyDetector = EmergencyPhraseDetector(this, firebaseLogger)
+        bluetoothScoManager = BluetoothScoManager(this, ::onAudioSourceChanged)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -57,6 +60,7 @@ class WakeWordService : Service() {
         stopAudioRecord()
         bluetoothScoManager.unregister()
         wakeWordDetector.close()
+        emergencyDetector.close()
         super.onDestroy()
     }
 
@@ -85,8 +89,9 @@ class WakeWordService : Service() {
             val buffer = ShortArray(CHUNK_SAMPLES)
             while (detectionJob?.isActive == true) {
                 val read = record.read(buffer, 0, CHUNK_SAMPLES)
-                if (read > 0 && wakeWordDetector.process(buffer, read)) {
-                    onWakeWordDetected()
+                if (read > 0) {
+                    emergencyDetector.process(buffer, read)
+                    if (wakeWordDetector.process(buffer, read)) onWakeWordDetected()
                 }
             }
             record.stop()
