@@ -7,7 +7,6 @@ import android.app.Service
 import android.content.Intent
 import android.media.AudioFormat
 import android.media.AudioRecord
-import android.media.MediaRecorder
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.opencompanion.companion.R
@@ -18,6 +17,8 @@ import com.opencompanion.companion.wakeword.WakeWordDetector
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class WakeWordService : Service() {
@@ -26,9 +27,9 @@ class WakeWordService : Service() {
         const val CHANNEL_ID = "wake_word_service"
         const val NOTIFICATION_ID = 1
         const val SAMPLE_RATE = 16000
-        // Record in 80ms chunks — matches the mel spectrogram model's expected input.
-        // WakeWordDetector accumulates internally so smaller chunks are also safe.
-        const val CHUNK_SAMPLES = WakeWordDetector.AUDIO_CHUNK_SAMPLES  // 1280 samples = 80ms
+        // Read in small chunks so the loop stays responsive to job cancellation.
+        // Accumulation to AUDIO_CHUNK_SAMPLES happens in startDetectionLoop().
+        private const val READ_CHUNK = 320  // 20ms
     }
 
     private var audioRecord: AudioRecord? = null
@@ -71,55 +72,70 @@ class WakeWordService : Service() {
         detectionJob?.cancel()
         detectionJob = serviceScope.launch {
             val audioSource = bluetoothScoManager.currentAudioSource()
-            val bufferSize = AudioRecord.getMinBufferSize(
-                SAMPLE_RATE,
-                AudioFormat.CHANNEL_IN_MONO,
-                AudioFormat.ENCODING_PCM_16BIT
-            ).coerceAtLeast(CHUNK_SAMPLES * 2)
+            val minBuf = AudioRecord.getMinBufferSize(
+                SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT
+            ).coerceAtLeast(READ_CHUNK * 4)
 
             val record = AudioRecord(
-                audioSource,
-                SAMPLE_RATE,
-                AudioFormat.CHANNEL_IN_MONO,
-                AudioFormat.ENCODING_PCM_16BIT,
-                bufferSize
+                audioSource, SAMPLE_RATE,
+                AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT,
+                minBuf
             )
             audioRecord = record
             record.startRecording()
 
-            val buffer = ShortArray(CHUNK_SAMPLES)
-            while (detectionJob?.isActive == true) {
-                val read = record.read(buffer, 0, CHUNK_SAMPLES)
-                if (read > 0) {
-                    emergencyDetector.process(buffer, read)
-                    if (wakeWordDetector.process(buffer, read)) onWakeWordDetected()
+            // Accumulation buffer owned entirely by this coroutine — no race possible.
+            val readBuf   = ShortArray(READ_CHUNK)
+            val accumBuf  = FloatArray(WakeWordDetector.AUDIO_CHUNK_SAMPLES)
+            var accumCount = 0
+
+            while (isActive) {
+                val read = record.read(readBuf, 0, READ_CHUNK)
+                if (read <= 0) continue
+
+                emergencyDetector.process(readBuf, read)
+
+                // Normalise and accumulate into float buffer
+                var i = 0
+                while (i < read) {
+                    val space = accumBuf.size - accumCount
+                    val copy  = minOf(space, read - i)
+                    for (j in 0 until copy) {
+                        accumBuf[accumCount + j] = readBuf[i + j] / 32768f
+                    }
+                    accumCount += copy
+                    i += copy
+
+                    if (accumCount == WakeWordDetector.AUDIO_CHUNK_SAMPLES) {
+                        if (wakeWordDetector.process(accumBuf)) {
+                            onWakeWordDetected()
+                            // Job is now cancelled — exit loop cleanly
+                            break
+                        }
+                        accumCount = 0
+                    }
                 }
             }
+
             record.stop()
             record.release()
         }
     }
 
     private fun onWakeWordDetected() {
-        stopAudioRecord()
         firebaseLogger.logWakeWord()
-
-        val assistIntent = Intent(Intent.ACTION_ASSIST).apply {
+        startActivity(Intent(Intent.ACTION_ASSIST).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
-        startActivity(assistIntent)
-
-        // Resume detection after handing off to assistant app
+        })
+        // Cancel current job and restart after 500ms so the assistant app gets the mic
+        detectionJob?.cancel()
         serviceScope.launch(Dispatchers.Main) {
-            kotlinx.coroutines.delay(500)
+            delay(500)
             startDetectionLoop()
         }
     }
 
-    private fun onAudioSourceChanged() {
-        // Restart the detection loop with the new audio source (BT SCO or phone mic)
-        startDetectionLoop()
-    }
+    private fun onAudioSourceChanged() = startDetectionLoop()
 
     private fun stopAudioRecord() {
         detectionJob?.cancel()
@@ -130,21 +146,18 @@ class WakeWordService : Service() {
         audioRecord = null
     }
 
-    private fun buildNotification(): Notification {
-        return NotificationCompat.Builder(this, CHANNEL_ID)
+    private fun buildNotification(): Notification =
+        NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle(getString(R.string.notification_title))
             .setContentText(getString(R.string.notification_text))
             .setSmallIcon(R.drawable.ic_mic)
             .setOngoing(true)
             .setSilent(true)
             .build()
-    }
 
     private fun createNotificationChannel() {
         val channel = NotificationChannel(
-            CHANNEL_ID,
-            "Wake Word Listener",
-            NotificationManager.IMPORTANCE_LOW
+            CHANNEL_ID, "Wake Word Listener", NotificationManager.IMPORTANCE_LOW
         ).apply {
             description = "Runs in background to listen for the wake word"
             setShowBadge(false)
