@@ -26,8 +26,9 @@ class WakeWordService : Service() {
         const val CHANNEL_ID = "wake_word_service"
         const val NOTIFICATION_ID = 1
         const val SAMPLE_RATE = 16000
-        const val CHUNK_SIZE_MS = 20
-        const val CHUNK_SAMPLES = SAMPLE_RATE * CHUNK_SIZE_MS / 1000  // 320 samples
+        // Record in 80ms chunks — matches the mel spectrogram model's expected input.
+        // WakeWordDetector accumulates internally so smaller chunks are also safe.
+        const val CHUNK_SAMPLES = WakeWordDetector.AUDIO_CHUNK_SAMPLES  // 1280 samples = 80ms
     }
 
     private var audioRecord: AudioRecord? = null
